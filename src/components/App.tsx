@@ -57,7 +57,7 @@ const App: FC = () => {
     <>
       <CssBaseline />
       <ThemeProvider theme={theme}>
-        <div className="App">
+        <div className="App" data-testid="app">
           <Container maxWidth="lg">
             <Switch>
               {routes.map((route) => (
