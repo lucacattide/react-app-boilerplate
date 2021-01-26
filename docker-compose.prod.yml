@@ -4,7 +4,7 @@ services:
     container_name: app-prod
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.prod
       labels:
         dev.app.title: ''
         dev.app.description: ''
