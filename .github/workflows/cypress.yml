@@ -1,0 +1,36 @@
+name: Cypress CI
+on: [push, pull_request]
+jobs:
+  test:
+    name: Cypress run
+    strategy:
+      matrix:
+        os: ['ubuntu-latest', 'windows-latest', 'macos-latest']
+        machines: [1, 2, 3]
+    runs-on: ${{ matrix.os }}
+    container: cypress/included:6.3.0
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run tests
+        run: cypress-io/github-action@v2
+        timeout-minutes: 10
+        with:
+          parallel: true
+          group: 'App parallel 3x End-To-End tests on ${{ matrix.os }}'
+          start: yarn run start
+          start-windows: yarn run start:ci:windows
+      - name: Set code coverage commit status
+        env:
+          GITHUB_TOKEN: ${{ secrets.CYPRESS_TOKEN }}
+      - name: Check code coverage dropping
+        run: yarn run set-gh-status --check-against-readme
+        env:
+          GITHUB_TOKEN: ${{ secrets.CYPRESS_TOKEN }}
+          GH_SHA: ${{ github.event.after }}
+      - name: Update code coverage badge
+        run: yarn run update-badge --from e2e/coverage/coverage-summary.json
+      - name: Commit changed file
+        uses: mikeal/publish-to-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.CYPRESS_TOKEN }}

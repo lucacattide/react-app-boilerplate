@@ -17,6 +17,10 @@ import { apiOptions } from '../src/utils';
 
 // Server
 const app = express();
+
+// End-To-End Testing Code Coverage
+require('@cypress/code-coverage/middleware/express')(app);
+
 const ssl = {
   key: fs.readFileSync('./server/server.key'),
   cert: fs.readFileSync('./server/server.crt'),

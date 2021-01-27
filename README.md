@@ -1,4 +1,4 @@
-# [Boilerplate] React
+# [Boilerplate] React ![check-code-coverage](https://img.shields.io/badge/code--coverage-0%25-red)
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/lucacattide/react-boilerplate.svg?style=for-the-badge)
 [![GitHub contributors](https://img.shields.io/badge/Contributors-1-lightgrey.svg?style=for-the-badge)](https://github.com/lucacattide/react-boilerplate/graphs/contributors)
@@ -108,6 +108,7 @@ kubectl delete service,deployment my-app
 - [Redux](https://redux.js.org/)
 - [Workbox](https://developers.google.com/web/tools/workbox/)
 - [Apollo Client](https://www.apollographql.com/)
+- [Testing Library](https://testing-library.com/)
 
 ### Frameworks
 
@@ -131,7 +132,13 @@ kubectl delete service,deployment my-app
 - [Kubernetes](https://kubernetes.io/)
 - [Heroku](https://www.heroku.com/)
 
+### Tools
+
+- [Cypress](https://www.cypress.io/)
+
 ## Testing
+
+### Unit
 
 To run the tests:
 
@@ -139,15 +146,21 @@ To run the tests:
 npm run test
 ```
 
-To run the tests with code coverage report:
+### End-To-End
+
+To open the test runner:
 
 ```
-npm run test --coverage
+npm run test:e2e
 ```
 
 ### Code Coverage
 
-![Branches](./coverage/badge-branches.svg 'Coverage - Branches') ![Branches](./coverage/badge-functions.svg 'Coverage - Functions') ![Branches](./coverage/badge-lines.svg 'Coverage - Lines') ![Branches](./coverage/badge-statements.svg 'Coverage - Statements')
+To run the unified test report:
+
+```
+npm run test:report
+```
 
 ## Deployment
 
@@ -221,7 +234,7 @@ For information please [consult the European Directive](http://tinyurl.com/qayqq
    - Website: URL;
 
 - Registrations
-  - © NAME 2020. All Rights reserved.
+  - © NAME 2021. All Rights reserved.
 
 ## Licenses
 
