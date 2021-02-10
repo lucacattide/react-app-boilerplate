@@ -21,6 +21,7 @@ jobs:
           start: yarn run start
           start-windows: yarn run start:ci:windows
       - name: Set code coverage commit status
+        run: yarn run set-gh-status
         env:
           GITHUB_TOKEN: ${{ secrets.CYPRESS_TOKEN }}
       - name: Check code coverage dropping
